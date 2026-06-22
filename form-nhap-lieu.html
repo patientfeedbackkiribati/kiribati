@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>K-PaF · Desk Registration Form</title>
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   EDIT THIS — paste your Supabase publishable key into SUPABASE_ANON.
+   (The URL is already set for your project. Use the publishable key only.)
+   ═══════════════════════════════════════════════════════════════════ */
+const SUPABASE_URL  = "https://xspzasjievdxknjbwyzy.supabase.co";
+const SUPABASE_ANON = "sb_publishable_ky-_jCG8aIKx2R3r3HZhag_nD8BzdAt";
+</script>
+<script>(function(){try{var t=localStorage.getItem('kpaf_theme');document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light');}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
+<script>(function(){try{var emb=(window.self!==window.top)||/[?&]embed=1/.test(location.search);if(emb)document.documentElement.setAttribute('data-embedded','1');}catch(e){document.documentElement.setAttribute('data-embedded','1');}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#001a3a; --bg2:#002651; --sf:#012a57;
+  --bd:rgba(0,147,213,.18); --bd2:rgba(0,147,213,.32);
+  --tx:#cfdcee; --hl:#eaf2fb; --mu:#90a4c0;
+  --gn:#3ecf8e; --gn2:#1a9960; --fld:rgba(0,0,0,.22);
+  --rd:#ef4444; --am:#f59e0b;
+  --sh-lg:0 24px 60px rgba(0,0,0,.55);
+}
+:root[data-theme="light"]{
+  --bg:#eef2f7; --bg2:#e3e9f2; --sf:#ffffff;
+  --bd:#e2e8f0; --bd2:#cdd7e3;
+  --tx:#1f2d3d; --hl:#0a1d30; --mu:#56657a;
+  --gn:#2bb673; --gn2:#1a9960; --fld:#f3f6fa;
+  --rd:#dc2626; --am:#d97706;
+  --sh-lg:0 24px 60px rgba(15,36,56,.18);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{font-family:'Open Sans',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--tx);line-height:1.5}
+
+.bar{display:flex;flex-direction:column;gap:0;
+  background:var(--sf);border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:20}
+.bar-top{display:flex;align-items:center;justify-content:center;padding:11px 20px 10px;border-bottom:1px solid var(--bd)}
+.bar-bot{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:8px 20px}
+[data-embedded] .bar{display:none !important}
+.brand{display:flex;align-items:center;gap:12px;flex:1;justify-content:center;min-width:0}
+.flagmark{flex:0 0 auto;width:52px;height:34px;border-radius:5px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.15)}
+.flagmark img{width:100%;height:100%;object-fit:cover;display:block}
+.brandttl{font-size:1.3rem;font-weight:800;color:var(--hl);letter-spacing:-.2px;line-height:1.15}
+.moh-brand{flex:0 0 auto;display:inline-flex;align-items:center;background:#fff;border-radius:8px;padding:6px 11px;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.moh-logo{height:42px;width:auto;display:block;object-fit:contain}
+.co-brand{flex:0 0 auto;display:inline-flex;align-items:center;text-decoration:none;opacity:.92;transition:opacity .2s}
+.co-brand:hover{opacity:1}
+.theme-tgl{flex:0 0 auto;width:38px;height:38px;border-radius:10px;border:1px solid var(--bd);background:var(--bg2);color:var(--tx);cursor:pointer;font-size:1.05rem;display:grid;place-items:center;transition:transform .15s,border-color .15s}
+.theme-tgl:hover{transform:translateY(-1px);border-color:var(--gn)}
+.theme-tgl .moon{display:none}.theme-tgl .sun{display:inline}
+[data-theme="light"] .theme-tgl .sun{display:none}[data-theme="light"] .theme-tgl .moon{display:inline}
+.co-logo{height:60px;width:auto;display:block;object-fit:contain;filter:brightness(0) invert(1) drop-shadow(0 2px 6px rgba(0,0,0,.35))}
+.rightgrp{display:flex;align-items:center;gap:16px;flex:0 0 auto}
+[data-theme="light"] .moh-brand{box-shadow:0 2px 8px rgba(0,0,0,.10)}
+[data-theme="light"] .co-logo{filter:none}
+[data-theme="light"] .flagmark{box-shadow:0 2px 8px rgba(15,36,56,.14),0 0 0 1px rgba(15,36,56,.06)}
+@media(max-width:700px){.brandttl{font-size:.95rem}.co-logo{height:46px}.moh-logo{height:34px}.flagmark{width:44px;height:29px}}
+.mark{flex:0 0 auto;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
+  background:var(--gn);color:#fff;font-size:1.15rem;box-shadow:0 2px 8px rgba(43,182,115,.35)}
+.brand .t{display:flex;flex-direction:column;line-height:1.18;min-width:0}
+.brand .t b{color:var(--hl);font-size:.98rem;font-weight:800;white-space:nowrap}
+.brand .t span{color:var(--mu);font-size:.72rem;white-space:nowrap}
+.nav{display:flex;align-items:center;gap:10px}
+.who{color:var(--mu);font-size:.82rem;font-weight:700}
+.b{font-family:inherit;font-size:.82rem;font-weight:700;cursor:pointer;border-radius:9px;padding:8px 15px;
+  border:1px solid transparent;transition:.15s;white-space:nowrap}
+.b-pri{background:var(--gn);color:#fff}
+.b-pri:hover{background:var(--gn2)}
+.b-pri:disabled{opacity:.55;cursor:default}
+.b-out{background:transparent;color:var(--tx);border-color:var(--bd2)}
+.b-out:hover{background:rgba(127,127,127,.12)}
+
+.wrap{max-width:760px;margin:0 auto;padding:24px 18px 60px}
+.intro{background:var(--sf);border:1px solid var(--bd);border-top:4px solid var(--gn);
+  border-radius:14px;padding:22px 24px;margin-bottom:20px}
+.intro h1{margin:0 0 8px;color:var(--hl);font-size:1.4rem;font-weight:800}
+.intro p{margin:0;color:var(--mu);font-size:.9rem}
+
+.sec{background:var(--sf);border:1px solid var(--bd);border-radius:14px;padding:20px 24px;margin-bottom:18px}
+.sec h2{margin:0 0 4px;color:var(--gn);font-size:1.05rem;font-weight:800}
+.sec .desc{margin:0 0 16px;color:var(--mu);font-size:.82rem;line-height:1.5}
+
+.q{margin-bottom:18px}
+.q:last-child{margin-bottom:0}
+.q label.qlabel{display:block;color:var(--hl);font-size:.9rem;font-weight:700;margin-bottom:7px}
+.q .req{color:var(--rd);margin-left:3px}
+.q .hint{display:block;color:var(--mu);font-size:.76rem;font-weight:400;margin-top:3px;line-height:1.45}
+input[type=text],input[type=tel],input[type=email],input[type=date],input[type=number],select,textarea{
+  width:100%;padding:10px 12px;font-family:inherit;font-size:.92rem;
+  background:var(--fld);color:var(--tx);border:1px solid var(--bd2);border-radius:9px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--gn)}
+textarea{resize:vertical;min-height:90px}
+select{cursor:pointer}
+/* Menu xổ xuống do HỆ ĐIỀU HÀNH vẽ — đặt màu tương phản mạnh, cố định,
+   để luôn đọc được dù trình duyệt/Windows ở chế độ sáng hay tối. */
+select option{background:#ffffff;color:#11243a;padding:6px}
+select optgroup{background:#eef2f7;color:#0f6e56;font-weight:700}
+select option:checked,select option:hover{background:#2bb673;color:#ffffff}
+.note-box{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);border-radius:8px;
+  padding:9px 12px;font-size:.78rem;color:var(--am);margin-top:7px}
+.other-field{margin-top:8px}
+.ref-img{display:block;width:100%;height:auto;border:1px solid var(--bd2);border-radius:9px;margin:8px 0 10px;background:#fff}
+
+.submit-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:8px}
+.bigbtn{font-family:inherit;font-size:.95rem;font-weight:800;cursor:pointer;border:0;border-radius:11px;
+  padding:13px 28px;background:var(--gn);color:#fff;box-shadow:0 4px 14px rgba(43,182,115,.35);transition:.15s}
+.bigbtn:hover{background:var(--gn2)}
+.bigbtn:disabled{opacity:.55;cursor:default;box-shadow:none}
+.msg{font-size:.85rem;font-weight:700}
+.msg.ok{color:var(--gn)}
+.msg.bad{color:var(--rd)}
+
+.mask{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:rgba(8,15,30,.55);backdrop-filter:blur(4px)}
+.card{width:min(380px,92vw);background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:26px 24px;box-shadow:var(--sh-lg)}
+.card h2{margin:0 0 4px;color:var(--hl);font-size:1.2rem;font-weight:800}
+.card .sub{margin:0 0 18px;color:var(--mu);font-size:.82rem}
+.card label{display:block;color:var(--hl);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;margin-bottom:14px}
+.card input{display:block;width:100%;margin-top:6px;padding:10px 12px;font-family:inherit;font-size:.92rem;background:var(--fld);color:var(--tx);border:1px solid var(--bd2);border-radius:9px;outline:none}
+.card input:focus{border-color:var(--gn)}
+.err{background:rgba(239,68,68,.12);color:var(--rd);border:1px solid rgba(239,68,68,.3);border-radius:8px;padding:8px 10px;font-size:.8rem;margin-bottom:12px}
+.row{display:flex;justify-content:flex-end;gap:10px;margin-top:4px}
+[hidden]{display:none!important}
+.toast{position:fixed;top:64px;left:50%;transform:translateX(-50%) translateY(-16px);z-index:60;
+  background:var(--gn);color:#fff;font-weight:700;font-size:.92rem;padding:13px 22px;border-radius:11px;
+  box-shadow:0 8px 26px rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;max-width:90vw;text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(max-width:680px){
+  .bar{padding:8px 12px}
+  .brand .t span{display:none}
+  .wrap{padding:16px 12px 50px}
+  .sec,.intro{padding:18px 16px}
+}
+</style>
+</head>
+<body>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<header class="bar">
+  <div class="bar-top">
+    <div class="brand">
+      <div class="flagmark" title="Republic of Kiribati"><img src="https://flagcdn.com/w160/ki.png" alt="Flag of Kiribati"></div>
+      <h1 class="brandttl">Kiribati Patient Feedback Dashboard</h1>
+    </div>
+  </div>
+  <div class="bar-bot">
+    <span class="moh-brand" title="Kiribati Ministry of Health &amp; Medical Services">
+      <img src="Logo-MoH.png" alt="Kiribati Ministry of Health &amp; Medical Services" class="moh-logo" onerror="this.onerror=null;var b=this.closest('.moh-brand');if(b)b.style.display='none'">
+    </span>
+    <div class="nav">
+      <button class="theme-tgl" id="themeBtn" onclick="toggleTheme()" title="Switch light / dark theme" aria-label="Switch light or dark theme"><span class="sun">☀️</span><span class="moon">🌙</span></button>
+      <span id="whoLabel" class="who" hidden></span>
+      <button id="btnLogout" class="b b-out" onclick="logout()" hidden>Log out</button>
+    </div>
+    <a href="https://www.who.int/westernpacific" target="_blank" rel="noopener" class="co-brand" title="World Health Organization · Western Pacific Region">
+      <img src="who-wpro-logo-blue.png" alt="WHO Western Pacific Region" class="co-logo">
+    </a>
+  </div>
+</header>
+
+<!-- Sign-in gate -->
+<div id="gate" class="wrap" style="text-align:center;padding-top:60px">
+  <div style="font-size:2.6rem;margin-bottom:12px">🔒</div>
+  <div style="color:var(--hl);font-size:1.2rem;font-weight:800;margin-bottom:8px">Sign in to register feedback</div>
+  <div style="color:var(--mu);font-size:.9rem;max-width:380px;margin:0 auto 20px;line-height:1.55">This form contains patient information. Only authorized K-PaF Office staff with an account may enter data.</div>
+  <button class="b b-pri" onclick="openLogin()">🔒 Sign in</button>
+</div>
+
+<!-- FORM (hidden until signed in) -->
+<div id="formWrap" class="wrap" hidden>
+  <div class="intro">
+    <h1>K-PaF Desk Registration Form</h1>
+    <p>This form is used to document and file feedback received from health service users through the K-PaF Office. Each submission should correspond to a single complaint, concern, suggestion, or compliment case. Fields marked <span style="color:var(--rd)">*</span> are required.</p>
+  </div>
+
+  <form id="kpafForm" onsubmit="return submitForm(event)">
+
+    <!-- ── SECTION 1 ── -->
+    <div class="sec">
+      <h2>Section 1 — Intake Information</h2>
+      <p class="desc">Details of how the feedback was received.</p>
+
+      <div class="q">
+        <label class="qlabel">1. Receipt Date <span class="req">*</span></label>
+        <input type="date" name="receipt_date" required>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">2. Intake Officer <span class="req">*</span></label>
+        <select name="intake_officer" required>
+          <option value="">— Select —</option>
+          <option>Marea Itaia</option>
+          <option value="Other">Other (please specify)</option>
+        </select>
+        <div class="other-field" id="intakeOfficerOtherWrap" hidden>
+          <input type="text" id="intake_officer_other" placeholder="Please specify">
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">3. Modality <span class="req">*</span></label>
+        <select name="modality" required>
+          <option value="">— Select —</option>
+          <option>Walk in/in person</option>
+          <option>Email</option>
+          <option>Phone call</option>
+          <option>Officer outreach</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- ── SECTION 2 ── -->
+    <div class="sec">
+      <h2>Section 2 — Concerned Person</h2>
+      <p class="desc">Provide the information of the healthcare user (patient) to whom the feedback relates.</p>
+
+      <div class="q">
+        <label class="qlabel">4. Patient ID <span class="req">*</span></label>
+        <input type="text" name="patient_id" required>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">5. Patient's Sex <span class="req">*</span></label>
+        <select name="patient_sex" required>
+          <option value="">— Select —</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">6. Patient's Age Category <span class="req">*</span></label>
+        <select name="patient_age_cat" required>
+          <option value="">— Select —</option>
+          <option>Newborn (0- 29 days)</option>
+          <option>1 - 11 months</option>
+          <option>1 - 5 years old</option>
+          <option>5 - 12 years old</option>
+          <option>13 - 19 years old</option>
+          <option>20 - 29 years old</option>
+          <option>30 - 39 years old</option>
+          <option>40 - 49 years old</option>
+          <option>50 - 59 years old</option>
+          <option>60 - 69 years old</option>
+          <option>&gt; 70 years old</option>
+          <option>Unknown</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">7. Patient's Address <span class="req">*</span></label>
+        <input type="text" name="patient_address" required>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">8. Phone</label>
+        <input type="tel" name="phone">
+      </div>
+
+      <div class="q">
+        <label class="qlabel">9. Email</label>
+        <input type="email" name="email">
+      </div>
+
+      <div class="q">
+        <label class="qlabel">10. Relationship to Patient <span class="req">*</span></label>
+        <select name="relationship" required>
+          <option value="">— Select —</option>
+          <option>Patient</option>
+          <option>Family</option>
+          <option>Friend / Acquaintance</option>
+          <option>Care Taker</option>
+          <option>Visitor</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- ── SECTION 3 ── -->
+    <div class="sec">
+      <h2>Section 3 — Concerned Facility</h2>
+      <p class="desc">Select the facility associated with the feedback.</p>
+
+      <div class="q">
+        <label class="qlabel">11. Concerned Facility <span class="req">*</span></label>
+        <select name="facility" required>
+          <option value="">— Select —</option>
+          <optgroup label="TCH">
+            <option>TCH: Outpatient Department</option>
+            <option>TCH: Operating Theatre</option>
+            <option>TCH: Emergency Department</option>
+            <option>TCH(OPD): Surgical Clinic</option>
+            <option>TCH(OPD): Gyne Medical Clinic</option>
+            <option>TCH(OPD): Diabetics Clinic</option>
+            <option>TCH(OPD): Medical Clinic</option>
+            <option>TCH(OPD): Pediatric Department</option>
+            <option>TCH(OPD): Psychiatric clinic</option>
+            <option>TCH(OPD): Antenatal Care and Health Programme</option>
+            <option>TCH(OPD): Family Clinic</option>
+            <option>TCH(IPD): Private Ward</option>
+            <option>TCH(IPD): Peadiatric Ward</option>
+            <option>TCH(IPD): Obstetrics &amp; Gynecology Ward</option>
+            <option>TCH(IPD): Surgical Ward</option>
+            <option>TCH(IPD): Medical Ward</option>
+            <option>TCH(IPD): Psychiatric Ward</option>
+            <option>TCH(IPD): TB Ward</option>
+            <option>TCH(IPD): Intensive Care Unit</option>
+            <option>TCH: Laboratory</option>
+          </optgroup>
+          <optgroup label="BH">
+            <option>BH(OPD): Obesteric</option>
+            <option>BH(OPD): Pediatrics</option>
+            <option>BH(IPD): Obesteric Ward</option>
+            <option>BH(IPD): Pediatrics Ward</option>
+            <option>BH(IPD): Private</option>
+          </optgroup>
+          <optgroup label="Clinics">
+            <option>AMBO Clinic</option>
+            <option>BAIRIKI Clinic</option>
+            <option>BANRAEABA Clinic</option>
+            <option>BIKENIBEU EAST Clinic</option>
+            <option>BIKENIBEU WEST Clinic</option>
+            <option>BONRIKI EAST Clinic</option>
+            <option>BONRIKI WEST Clinic</option>
+            <option>BUOTA Clinic</option>
+            <option>EITA Clinic</option>
+            <option>NANIKAI Clinic</option>
+            <option>TAKORONGA Clinic</option>
+            <option>TEAORAEREKE Clinic</option>
+            <option>TEMAIKU Clinic</option>
+            <option>TEMAKIN Clinic</option>
+            <option>TEMAUOKO Clinic</option>
+            <option>TETOAMATOA Clinic</option>
+            <option>URANO Clinic</option>
+            <option>Maungan DOTs Clinic</option>
+            <option>TEMAIKU Maneaba</option>
+          </optgroup>
+          <option value="Other">Other (please specify)</option>
+        </select>
+      </div>
+
+      <div class="q other-field" id="facilityOtherWrap" hidden>
+        <label class="qlabel">11-1. Concerned Facility — please specify <span class="req">*</span></label>
+        <input type="text" name="facility_other" placeholder="Please specify" disabled>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">12. Area of Facility</label>
+        <input type="text" name="facility_area">
+        <span class="hint">Specify the facility area when available.</span>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">13. Inpatient / Outpatient <span class="req">*</span></label>
+        <select name="in_outpatient" required>
+          <option value="">— Select —</option>
+          <option>Outpatient</option>
+          <option>Inpatient</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">14. Complaint or Compliment <span class="req">*</span></label>
+        <select name="case_type" required>
+          <option value="">— Select —</option>
+          <option>Complaint</option>
+          <option>Compliment</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- ── SECTION 4 ── -->
+    <div class="sec js-complaint-section">
+      <h2>Section 4 — Complaint Categories</h2>
+      <p class="desc">Please record the feedback as described by the client. Where possible, describe events in chronological order and distinguish between the events themselves and the client's perceptions, feelings, assumptions, or beliefs. Do not include the opinions or interpretations of the person receiving the feedback.</p>
+
+      <div class="q">
+        <label class="qlabel">15. Complaint Details <span class="req">*</span></label>
+        <img src="complaint-categories-reference.png" alt="Complaint category reference table" class="ref-img">
+        <textarea name="complaint_details" required></textarea>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">15-2. Complaint Summary — to be shared with MHMS <span class="req">*</span></label>
+        <textarea name="complaint_summary" required></textarea>
+        <div class="note-box">⚠ Note: To ensure patient data security, data entry personnel must not include any personally identifiable information in the complaint summary.</div>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">16. Case Categories <span class="req">*</span></label>
+        <select name="case_category" required>
+          <option value="">— Select —</option>
+          <optgroup label="Clinical">
+            <option>Clinical: Quality: Examinations</option>
+            <option>Clinical: Quality: Patient Journey(Clinical)</option>
+            <option>Clinical: Quality: Quality of care</option>
+            <option>Clinical: Quality: Treatment</option>
+            <option>Clinical: Safety: Errors in Triage</option>
+            <option>Clinical: Safety: Errors in diagnosis</option>
+            <option>Clinical: Safety: Medication errors</option>
+            <option>Clinical: Safety: Safety incidents</option>
+            <option>Clinical: Safety: Skills and conduct</option>
+            <option>Clinical: Saftey: Clinical documentation</option>
+          </optgroup>
+          <optgroup label="Management">
+            <option>Management: Institutional Issues: Bureaucracy</option>
+            <option>Management: Institutional Issues: Environment</option>
+            <option>Management: Institutional Issues: Finance and billing</option>
+            <option>Management: Institutional Issues: Service issues</option>
+            <option>Management: Institutional Issues: Staffing and resources</option>
+            <option>Management: Institutional Issues: Patient Journey(Administrative)</option>
+            <option>Management: Timing and access: Access and admission</option>
+            <option>Management: Timing and access: Medicines and supplies</option>
+            <option>Management: Timing and access: Delays</option>
+            <option>Management: Timing and access: Discharge</option>
+            <option>Management: Timing and access: Referrals</option>
+          </optgroup>
+          <optgroup label="Relationships">
+            <option>Relationships: Communication: Communication breakdown</option>
+            <option>Relationships: Communication: Incorrect information</option>
+            <option>Relationships: Communication: Patient-staff dialogue</option>
+            <option>Relationships: Humaneness/caring: Respect, dignity, and caring</option>
+            <option>Relationships: Humaneness/caring: Staff attitudes</option>
+            <option>Relationships: Humaneness/caring: Abuse</option>
+            <option>Relationships: Patient Rights: Confidentiality</option>
+            <option>Relationships: Patient Rights: Consent</option>
+            <option>Relationships: Patient Rights: Discrimination</option>
+          </optgroup>
+          <option value="Other">Other (please specify)</option>
+        </select>
+      </div>
+
+      <div class="q other-field" id="caseCategoryOtherWrap" hidden>
+        <label class="qlabel">16-1. Case Categories — please specify <span class="req">*</span></label>
+        <input type="text" name="case_category_other" placeholder="Please specify" disabled>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">17. Complaints Group <span class="req">*</span></label>
+        <select name="complaints_group" required>
+          <option value="">— Select —</option>
+          <option>Medical</option>
+          <option>Nursing</option>
+          <option>Pharmacist</option>
+          <option>Laboratory</option>
+          <option>Admin</option>
+          <option>Ambulance Crew</option>
+          <option>Transportation Staff</option>
+          <option>Policy / Leadership</option>
+          <option>Security Guard</option>
+          <option>Facility and Maintenance</option>
+          <option>Kitchen and Catering</option>
+          <option>Coordination</option>
+          <option value="Other">Other (please specify)</option>
+        </select>
+      </div>
+
+      <div class="q other-field" id="complaintsGroupOtherWrap" hidden>
+        <label class="qlabel">17-1. Complaints Group — please specify <span class="req">*</span></label>
+        <input type="text" name="complaints_group_other" placeholder="Please specify" disabled>
+      </div>
+    </div>
+
+    <!-- ── SECTION 5 ── -->
+    <div class="sec js-complaint-section">
+      <h2>Section 5 — Stage of Patient Journey</h2>
+      <p class="desc">Please select the stage of the patient's healthcare journey to which the feedback relates. This helps identify where in the care process the experience, concern, or issue occurred.</p>
+
+      <div class="q">
+        <label class="qlabel">18. Patient journey <span class="req">*</span></label>
+        <select name="patient_journey" required>
+          <option value="">— Select —</option>
+          <option>Appointment</option>
+          <option>Transport (incl. ambulance)</option>
+          <option>Registration / Reception</option>
+          <option>Pre-Examination</option>
+          <option>Consultation/Examination / Initial Assessment</option>
+          <option>Laboratory</option>
+          <option>Pre-Admission</option>
+          <option>Admissions</option>
+          <option>Care on Ward</option>
+          <option>Procedures / Operations</option>
+          <option>Pharmacy</option>
+          <option>Discharge (OPD)</option>
+          <option>Discharge(IPD)</option>
+          <option>Patient Transit Facility (Maneaba)</option>
+          <option value="Other">Other (please specify)</option>
+        </select>
+      </div>
+
+      <div class="q other-field" id="patientJourneyOtherWrap" hidden>
+        <label class="qlabel">18-1. Patient journey — please specify <span class="req">*</span></label>
+        <input type="text" name="patient_journey_other" placeholder="Please specify" disabled>
+      </div>
+    </div>
+
+    <!-- ── SECTION 6 ── -->
+    <div class="sec js-complaint-section">
+      <h2>Section 6 — Requested Follow-up</h2>
+      <p class="desc">Please indicate what the client expects from K-PaF and/or MHMS in response to this feedback.</p>
+
+      <div class="q">
+        <label class="qlabel">19. Requested Follow-up <span class="req">*</span></label>
+        <select name="followup_requested" required>
+          <option value="">— Select —</option>
+          <option>Action + Report back</option>
+          <option>Action but no report back</option>
+          <option>Feedback only</option>
+          <option>Undetermined</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">20. Date Forwarded to PNO / Responsible Staff</label>
+        <input type="date" name="date_forwarded_pno">
+      </div>
+
+      <div class="q">
+        <label class="qlabel">20-1. Handed over to</label>
+        <input type="text" name="handed_over_to" placeholder="Name of PNO / responsible staff">
+      </div>
+
+      <div class="q">
+        <label class="qlabel">21. Case Status <span class="req">*</span></label>
+        <select name="case_status" required>
+          <option value="">— Select —</option>
+          <option>Case Closed</option>
+          <option>Pending at K-PaF</option>
+          <option>Pending at MHMS</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">22. Date Closed <span id="dateClosedReq" class="req" hidden>*</span></label>
+        <input type="date" name="date_closed">
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="sec">
+      <div class="submit-row">
+        <button type="submit" class="bigbtn" id="btnSubmit">Submit</button>
+        <span id="formMsg" class="msg"></span>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<!-- Login modal -->
+<div id="loginMask" class="mask" hidden>
+  <form class="card" onsubmit="return doLogin(event)">
+    <h2>Staff sign in</h2>
+    <p class="sub">Sign in to open the registration form.</p>
+    <label>Email<input id="liUser" autocomplete="username" spellcheck="false"></label>
+    <label>Password<input id="liPass" type="password" autocomplete="current-password"></label>
+    <div id="liErr" class="err" hidden></div>
+    <div class="row">
+      <button type="button" class="b b-out" onclick="closeLogin()">Cancel</button>
+      <button type="submit" class="b b-pri">Sign in</button>
+    </div>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+const $ = id => document.getElementById(id);
+function toggleTheme(){
+  const cur=document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';
+  const next=cur==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  try{localStorage.setItem('kpaf_theme',next);}catch(e){}
+}
+addEventListener('storage',function(e){
+  if(e.key==='kpaf_theme') document.documentElement.setAttribute('data-theme', e.newValue==='dark'?'dark':'light');
+});
+let _toastTimer=null;
+function showToast(text){
+  const t=$('toast'); if(!t) return;
+  t.textContent=text; t.classList.add('show');
+  if(_toastTimer) clearTimeout(_toastTimer);
+  _toastTimer=setTimeout(()=>{ t.classList.remove('show'); }, 4000);
+}
+const SK_AUTH = 'kpaf_v10_auth';
+const SK_TOKEN = 'kpaf_v10_token';
+const authed = () => !!sessionStorage.getItem(SK_AUTH);
+
+function openLogin(){ $('liErr').hidden=true; $('liUser').value=''; $('liPass').value=''; $('loginMask').hidden=false; setTimeout(()=>$('liUser').focus(),30); }
+function closeLogin(){ $('loginMask').hidden=true; }
+
+async function doLogin(e){
+  e.preventDefault();
+  const email=($('liUser').value||'').trim(), pass=$('liPass').value||'';
+  const er=$('liErr'); er.hidden=true;
+  const btn=e.target.querySelector('button[type="submit"]');
+  if(btn){btn.disabled=true;btn.textContent='Signing in…';}
+  try{
+    const {data,error}=await sb.auth.signInWithPassword({email,password:pass});
+    if(error||!data||!data.session){ er.textContent='Incorrect email or password — please try again.'; er.hidden=false; $('liPass').value=''; }
+    else{ sessionStorage.setItem(SK_AUTH,data.user.email||email); sessionStorage.setItem(SK_TOKEN,data.session.access_token); closeLogin(); applyAuthUI(); }
+  }catch(err){ er.textContent='Could not reach the server — check your connection.'; er.hidden=false; }
+  finally{ if(btn){btn.disabled=false;btn.textContent='Sign in';} }
+  return false;
+}
+
+async function logout(){
+  try{ await sb.auth.signOut(); }catch(e){}
+  sessionStorage.removeItem(SK_AUTH); sessionStorage.removeItem(SK_TOKEN);
+  applyAuthUI();
+}
+
+function applyAuthUI(){
+  const on=authed();
+  $('gate').hidden=on;
+  $('formWrap').hidden=!on;
+  $('whoLabel').hidden=!on;
+  $('btnLogout').hidden=!on;
+  if(on) $('whoLabel').textContent='👤 '+(sessionStorage.getItem(SK_AUTH)||'');
+}
+
+addEventListener('keydown', e=>{ if(e.key==='Escape') closeLogin(); });
+
+(async function boot(){
+  try{
+    const {data}=await sb.auth.getSession();
+    if(data&&data.session){ sessionStorage.setItem(SK_AUTH,data.session.user.email||''); sessionStorage.setItem(SK_TOKEN,data.session.access_token); }
+  }catch(e){}
+  applyAuthUI();
+})();
+
+/* ── Submit the form to Supabase ─────────────────────────────────────
+   Read every field → build an object → POST to the cases table.
+   Empty fields → null (date columns especially must be null, not "").
+   case_number is auto-generated so each case has a unique ID
+   (used by the Follow-up dashboard to locate it). */
+const CASES_TABLE = 'cases';
+const CASE_COLUMNS = new Set([
+  'case_number','ts_form','receipt_date','intake_officer','modality',
+  'patient_id','patient_sex','patient_age_cat','patient_address','phone','email',
+  'relationship','facility','facility_other','facility_area','in_outpatient',
+  'case_type','complaint_details','complaint_summary','case_category',
+  'case_category_other','complaints_group','complaints_group_other',
+  'patient_journey','patient_journey_other','followup_requested',
+  'date_forwarded_pno','handed_over_to','case_status','date_last_fu_pno',
+  'date_closed','duration_to_close','status_after_fu','followup_end_date',
+  'followup_notes'
+]);
+const DATE_FIELDS = ['receipt_date','date_forwarded_pno','date_last_fu_pno','date_closed','followup_end_date'];
+const OTHER_FIELDS = [
+  {select:'intake_officer', wrap:'intakeOfficerOtherWrap', input:'#intake_officer_other'},
+  {select:'facility', wrap:'facilityOtherWrap', input:'input[name="facility_other"]'},
+  {select:'case_category', wrap:'caseCategoryOtherWrap', input:'input[name="case_category_other"]'},
+  {select:'complaints_group', wrap:'complaintsGroupOtherWrap', input:'input[name="complaints_group_other"]'},
+  {select:'patient_journey', wrap:'patientJourneyOtherWrap', input:'input[name="patient_journey_other"]'}
+];
+
+function taoCaseNumber(){
+  const d=new Date();
+  const ymd=d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0');
+  const rand=Math.floor(1000+Math.random()*9000);
+  return 'KPAF-'+ymd+'-'+rand;
+}
+
+function setControlEnabled(el,on){
+  el.disabled=!on;
+  el.required=on && el.dataset.baseRequired==='1';
+}
+
+function updateOtherField(cfg){
+  const form=$('kpafForm');
+  const sel=form.querySelector('[name="'+cfg.select+'"]');
+  const wrap=$(cfg.wrap);
+  const input=form.querySelector(cfg.input);
+  if(!sel||!wrap||!input) return;
+  const show=sel.value==='Other' && !sel.disabled;
+  wrap.hidden=!show;
+  input.disabled=!show;
+  input.required=show;
+  if(!show) input.value='';
+}
+
+function updateConditionalFields(scrollToSubmit){
+  const form=$('kpafForm');
+  const isCompliment=form.elements.case_type && form.elements.case_type.value==='Compliment';
+  const isOtherCaseCategory=form.elements.case_category && form.elements.case_category.value==='Other';
+  const dateClosed=form.elements.date_closed;
+  const dateClosedReq=$('dateClosedReq');
+  form.querySelectorAll('.js-complaint-section').forEach(sec=>{
+    sec.hidden=isCompliment;
+    sec.querySelectorAll('input,select,textarea').forEach(el=>setControlEnabled(el,!isCompliment));
+  });
+  if(dateClosed){
+    const needsDateClosed=!dateClosed.disabled && form.elements.case_status && form.elements.case_status.value==='Case Closed';
+    dateClosed.required=needsDateClosed;
+    dateClosed.dataset.baseRequired=needsDateClosed?'1':'0';
+    if(dateClosedReq) dateClosedReq.hidden=!needsDateClosed;
+  }
+  OTHER_FIELDS.forEach(updateOtherField);
+  if((isCompliment || isOtherCaseCategory) && scrollToSubmit){
+    $('btnSubmit').scrollIntoView({behavior:'smooth',block:'center'});
+  }
+}
+
+function initConditionalForm(){
+  const form=$('kpafForm');
+  form.querySelectorAll('input,select,textarea').forEach(el=>{
+    el.dataset.baseRequired=el.required?'1':'0';
+  });
+  OTHER_FIELDS.forEach(cfg=>{
+    const sel=form.querySelector('[name="'+cfg.select+'"]');
+    if(sel) sel.addEventListener('change',()=>updateConditionalFields(cfg.select==='case_category'));
+  });
+  if(form.elements.case_type){
+    form.elements.case_type.addEventListener('change',()=>updateConditionalFields(true));
+  }
+  if(form.elements.case_status){
+    form.elements.case_status.addEventListener('change',()=>updateConditionalFields(false));
+  }
+  form.addEventListener('reset',()=>setTimeout(()=>updateConditionalFields(false),0));
+  updateConditionalFields(false);
+}
+initConditionalForm();
+
+async function submitForm(e){
+  e.preventDefault();
+  const form=$('kpafForm');
+  const btn=$('btnSubmit'), msg=$('formMsg');
+  msg.className='msg'; msg.textContent='';
+
+  const token=sessionStorage.getItem(SK_TOKEN);
+  if(!token){ msg.className='msg bad'; msg.textContent='Your session has expired — please sign in again.'; return false; }
+
+  // Collect form data
+  const fd=new FormData(form);
+  const row={};
+  for(const [k,v] of fd.entries()){
+    const val=(typeof v==='string')?v.trim():v;
+    if(val===''){ row[k]=null; }                  // empty → null
+    else if(DATE_FIELDS.includes(k)){ row[k]=val; } // date: keep YYYY-MM-DD
+    else{ row[k]=val; }
+  }
+  if(row.intake_officer==='Other'){
+    row.intake_officer=($('intake_officer_other').value||'').trim()||null;
+  }
+  row.case_number=taoCaseNumber();   // auto-generated case number
+  row.ts_form=new Date().toISOString(); // submission timestamp
+  const payload=Object.fromEntries(Object.entries(row).filter(([k])=>CASE_COLUMNS.has(k)));
+
+  btn.disabled=true; btn.textContent='Submitting…';
+  try{
+    const res=await fetch(SUPABASE_URL.replace(/\/$/,'')+'/rest/v1/'+CASES_TABLE,{
+      method:'POST',
+      headers:{
+        'apikey':SUPABASE_ANON,
+        'Authorization':'Bearer '+token,
+        'Content-Type':'application/json',
+        'Prefer':'return=minimal'
+      },
+      body:JSON.stringify(payload)
+    });
+    if(res.ok){
+      msg.className='msg ok';
+      msg.textContent='✓ Saved (case '+row.case_number+'). Form cleared for the next case.';
+      form.reset();
+      showToast('✓ Case submitted — a new blank form is ready.');
+      window.scrollTo({top:0,behavior:'smooth'});
+      const first=form.querySelector('input,select,textarea');
+      if(first) setTimeout(()=>{ try{first.focus();}catch(e){} }, 400);
+    } else {
+      let detail='';
+      try{ const j=await res.json(); detail=j.message||j.hint||''; }catch(_){}
+      if(res.status===401||res.status===403){
+        msg.className='msg bad';
+        msg.textContent='Denied (HTTP '+res.status+'): your session has expired. Sign in again, then resubmit.';
+      } else {
+        msg.className='msg bad';
+        msg.textContent='Error while saving (HTTP '+res.status+'). '+detail;
+      }
+    }
+  }catch(err){
+    msg.className='msg bad';
+    msg.textContent='Could not submit — check your connection. ('+(err.message||'')+')';
+  }finally{
+    btn.disabled=false; btn.textContent='Submit';
+  }
+  return false;
+}
+</script>
+</body>
+</html>
